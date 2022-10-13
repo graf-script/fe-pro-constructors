@@ -12,6 +12,8 @@ rammfall.addToFriends(yura);
 rammfall.addToFriends(julia);
 rammfall.likeBook(manga);
 
-rammfall[friendsNames];
+console.log(rammfall.friendsNames);
+console.log(rammfall.likedBooks);
+
 console.log(rammfall);
 

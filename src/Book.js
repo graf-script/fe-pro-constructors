@@ -16,22 +16,43 @@ import { User } from './User.js';
 export function Book(title, year, publicationBy, authors) {
     this.title = title;
     this.year = year;
+    this.likedUsers = [];
     this.publicationBy = publicationBy;
     this.authors = authors;
-    this.likedUsers = [];
 
-   /* publicationBy.myBooks.push(this);
-    authors.forEach((author) => {
-        author.books.push(this);
-    });
+   // publicationBy.myBooks.push(this);
+   // authors.forEach((author) => { author.books.push(this); });
 
     Object.defineProperty(this, 'suggestedPublicators', {
         get() {
-            return this.author.reduce((accum, author) => {
-                const uniqueBooks = new Set([...accum, ...author.books])
+            return this
+                .author
+                .reduce((accum, author) => {
+                    const publicators = author.books.map((book) => book.publicationBy);
+                    const uniquePublicators = new Set(publicators);
 
-                return[...uniqueBooks];
-            }, []);
+                    return[...uniquePublicators];
+            }, [])
+                .filter((publicator) => publicator !== this.publicationBy)
+                .map(({ name }) => name)
+                .join(', ');
         }
-    })*/
+    });
+
+    Object.defineProperty(this, 'suggestedBooks', {
+        get() {
+            return this
+                .author
+                .reduce((accum, author) => {
+                    const publicators = author.books.map((book) => book.publicationBy);
+                    const uniquePublicators = new Set(publicators);
+
+                    return[...uniquePublicators];
+            }, [])
+                .filter((publicator) => publicator !== this.publicationBy)
+                .map(({ name }) => name)
+                .join(', ');
+        }
+    });
 }
+

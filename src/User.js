@@ -14,9 +14,9 @@ import { Book } from './Book.js';
 export function User(name, date) {
     this.name = name;
     this.date = date;
-    this.myBooks = [];
     this.friends = [];
     this.likes = [];
+    this.myBooks = [];
 
     this.addToFriends = function(friend) {
         if (this.friends.includes(friend)){
@@ -51,5 +51,16 @@ export function User(name, date) {
             return this.friends.map(({ name }) => name).join(', ');
         }
     });
-}
 
+    Object.defineProperty(this, 'likedBooks', {
+        get() {
+            return this.likes.map(({ title }) => title).join(', ');
+        }
+    });
+
+    Object.defineProperty(this, 'publishedBooks', {
+        get() {
+            return this.published.map(({ title }) => title).join(', ');
+        }
+    });
+}
