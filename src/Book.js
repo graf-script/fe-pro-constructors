@@ -41,14 +41,17 @@ export function Book(title, year, publicationBy, authors) {
 
     Object.defineProperty(this, 'suggestedBooks', {
         get() {
-            return this.authors.reduce((accum, author) => {
-                const authorsBooks = author.books.map((book) => book);
-                const uniqueBooks = new Set(authorsBooks);
+            return this
+                .authors
+                .reduce((accum, author) => {
+                    const authorsBooks = author.books.map((book) => book);
+                    const uniqueBooks = new Set(authorsBooks);
 
-                return [...uniqueBooks];
+                    return [...uniqueBooks];
             }, [])
                 .filter((book) => book !== this)
-                .map(({title}) => title).join(', ');
+                .map(({title}) => title)
+                .join(', ');
         }
     });
 }
