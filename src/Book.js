@@ -26,7 +26,7 @@ export function Book(title, year, publicationBy, authors) {
     Object.defineProperty(this, 'suggestedPublicators', {
         get() {
             return this
-                .author
+                .authors
                 .reduce((accum, author) => {
                     const publicators = author.books.map((book) => book.publicationBy);
                     const uniquePublicators = new Set(publicators);
