@@ -60,7 +60,7 @@ export function User(name, date) {
 
     Object.defineProperty(this, 'publishedBooks', {
         get() {
-            return this.published.map(({ title }) => title).join(', ');
+            return this.myBooks.map(({ title }) => title).join(', ');
         }
     });
 }

@@ -20,8 +20,8 @@ export function Book(title, year, publicationBy, authors) {
     this.publicationBy = publicationBy;
     this.authors = authors;
 
-   // publicationBy.myBooks.push(this);
-   // authors.forEach((author) => { author.books.push(this); });
+    publicationBy.myBooks.push(this);
+    authors.forEach((author) => { author.books.push(this); });
 
     Object.defineProperty(this, 'suggestedPublicators', {
         get() {
@@ -41,17 +41,14 @@ export function Book(title, year, publicationBy, authors) {
 
     Object.defineProperty(this, 'suggestedBooks', {
         get() {
-            return this
-                .author
-                .reduce((accum, author) => {
-                    const publicators = author.books.map((book) => book.publicationBy);
-                    const uniquePublicators = new Set(publicators);
+            return this.authors.reduce((accum, author) => {
+                const authorsBooks = author.books.map((book) => book);
+                const uniqueBooks = new Set(authorsBooks);
 
-                    return[...uniquePublicators];
+                return [...uniqueBooks];
             }, [])
-                .filter((publicator) => publicator !== this.publicationBy)
-                .map(({ name }) => name)
-                .join(', ');
+                .filter((book) => book !== this)
+                .map(({title}) => title).join(', ');
         }
     });
 }

@@ -14,6 +14,7 @@ rammfall.likeBook(manga);
 
 console.log(rammfall.friendsNames);
 console.log(rammfall.likedBooks);
+console.log(rammfall.publishedBooks);
 
 console.log(rammfall);
 
