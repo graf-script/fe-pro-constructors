@@ -21,7 +21,7 @@ export function User(name, date) {
     this.addToFriends = function(friend) {
         if (this.friends.includes(friend)){
             this.friends = this.friends.filter((user) => user !== friend);
-            friend.friends = this.friends.filter((user) => user !== this);
+            friend.friends = friends.friends.filter((user) => user !== this);
 
             return;
         }
