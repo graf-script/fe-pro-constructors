@@ -35,14 +35,16 @@ export function User(name, date) {
     this.likeBook = function(book) {
         if (this.likes.includes(book)){
             this.likes = this.likes.filter((user) => user !== book);
-            book.likes = this.likes.filter((user) => user !== this);
+            book.likedUsers = book.likedUsers.filter((user) => user !== this);
 
             return;
         }
 
         this.likes.push(book);
-        book.likes.push(this);
+        book.likedUsers.push(this);
     };
+
+    this.unlikeBook = this.likeBook;
 
     Object.defineProperty(this, 'friendsNames', {
         get() {

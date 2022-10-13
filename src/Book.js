@@ -18,8 +18,9 @@ export function Book(title, year, publicationBy, authors) {
     this.year = year;
     this.publicationBy = publicationBy;
     this.authors = authors;
+    this.likedUsers = [];
 
-    publicationBy.myBooks.push(this);
+   /* publicationBy.myBooks.push(this);
     authors.forEach((author) => {
         author.books.push(this);
     });
@@ -32,5 +33,5 @@ export function Book(title, year, publicationBy, authors) {
                 return[...uniqueBooks];
             }, []);
         }
-    })
+    })*/
 }

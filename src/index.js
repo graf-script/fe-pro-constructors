@@ -11,6 +11,7 @@ const manga = new Book('Jojo');
 rammfall.addToFriends(yura);
 rammfall.addToFriends(julia);
 rammfall.likeBook(manga);
+
+rammfall[friendsNames];
 console.log(rammfall);
-console.log(friendsNames(rammfall));
 
